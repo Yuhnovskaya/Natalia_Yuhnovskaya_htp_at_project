@@ -1,4 +1,4 @@
-url_trashmail=https://trashmail.com/
-user_name=TEST-USER
-psw=123
-user_name=n.yuhnovskaya@gmail.com
+USER_TRASHMAIL=https://trashmail.com/
+USER_NAME=TEST-USER(1)
+PSW=123
+USER_MAIL=n.yuhnovskaya@gmail.com
