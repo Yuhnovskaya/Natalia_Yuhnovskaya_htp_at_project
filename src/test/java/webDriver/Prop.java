@@ -1,4 +1,4 @@
-package otherStuff;
+package webDriver;
 
 import java.io.FileInputStream;
 import java.io.IOException;
