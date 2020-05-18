@@ -29,7 +29,7 @@ public class VerifyColorList {
         BookingLoginPage.login(driver,email,prop.getProperty("BOOKING_PSW"));
         TimeUnit.SECONDS.sleep(5);
         BookingIndexPage.findCity(driver, "Мадрид");
-        BookingIndexPage.getDatesInUntil(driver, 30, 5);
+        BookingIndexPage.getDatesFromUntil(driver, 30, 5);
         BookingIndexPage.checkPrice(driver);
         TimeUnit.SECONDS.sleep(15);
         WebElement firstHeart = BaseSteps.elementFindClick(driver, "//*[@id=\"hotellist_inner\"]/div[1]/div[1]/div/button");
