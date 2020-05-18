@@ -18,7 +18,7 @@ import webDriver.Prop;
 import java.util.Properties;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({VerifyPriceParis.class, VerifyPriceMoscow.class})
+@Suite.SuiteClasses({VerifyPriceParis.class, VerifyPriceMoscow.class, VerifyAddressColorOslo.class})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ParisMoscowOsloTest {
     static Properties prop = Prop.getProp();
