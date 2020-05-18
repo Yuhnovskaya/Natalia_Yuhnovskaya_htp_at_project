@@ -1,6 +1,5 @@
 package tests;
 
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -8,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import webDriver.Config;
 import webDriver.DestroyDriver;
@@ -17,9 +15,6 @@ import webDriver.Prop;
 import webPages.BookingIndexPage;
 import webPages.HotelsPage;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Properties;
 
 public class VerifyAddressColorOslo {
