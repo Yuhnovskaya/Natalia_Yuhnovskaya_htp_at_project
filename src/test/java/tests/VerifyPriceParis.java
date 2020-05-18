@@ -1,22 +1,12 @@
 package tests;
 
-import org.checkerframework.checker.units.qual.A;
 import org.junit.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import webDriver.*;
 import webPages.BookingIndexPage;
-import webPages.BookingLoginPage;
 import webPages.HotelsPage;
-import webPages.TrashmailAddressManagerPage;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 public class VerifyPriceParis {
     static Properties prop = Prop.getProp();
