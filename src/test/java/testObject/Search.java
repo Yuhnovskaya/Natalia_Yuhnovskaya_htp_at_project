@@ -9,3 +9,4 @@ public class Search {
         this.strict = strict;
     }
 }
+//request
