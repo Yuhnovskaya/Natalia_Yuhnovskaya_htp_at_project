@@ -1,0 +1,23 @@
+{"testData":[
+  {
+    "user": "",
+    "strict": false
+  },
+  {
+    "user": "a",
+    "strict": true
+  },
+  {
+    "user": "a",
+    "strict": false
+  },
+  {
+    "user": "saldo",
+    "strict": true
+  },
+  {
+    "user": "saldo",
+    "strict": false
+  }
+  ]
+}
