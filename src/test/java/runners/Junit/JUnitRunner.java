@@ -1,4 +1,4 @@
-package runners;
+package runners.Junit;
 
 
 import org.junit.runner.RunWith;
@@ -9,4 +9,3 @@ import tests.searchTest;
 @Suite.SuiteClasses({searchTest.class})
 public class JUnitRunner {
 }
-//request
