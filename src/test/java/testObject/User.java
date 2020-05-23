@@ -1,13 +1,13 @@
 package testObject;
 
-public class Data {
+public class User {
     int id;
     String username;
     String realname;
     String password;
     String email;
 
-    public Data(int id, String username, String realname, String password, String email) {
+    public User(int id, String username, String realname, String password, String email) {
         this.id = id;
         this.username = username;
         this.realname = realname;
@@ -40,4 +40,3 @@ public class Data {
         return this.id + " " + this.username + " " + this.realname + " " + this.password + " " + this.email;
     }
 }
-//request
