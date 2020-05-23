@@ -18,3 +18,4 @@ public class CheckResult {
         return false;
     }
 }
+//request
