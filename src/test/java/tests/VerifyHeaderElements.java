@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 public class VerifyHeaderElements {
     static WebDriver driver = DrManager.getDriver(Config.CHROME);
-   /* public static void dobefore() {
+  /*public static void dobefore() throws InterruptedException {
         Properties prop = Prop.getProp();
         String email=GetTrashmailAddress.getTrashmailAddress(driver);
         driver.get(prop.getProperty("URL_BOOKING"));
