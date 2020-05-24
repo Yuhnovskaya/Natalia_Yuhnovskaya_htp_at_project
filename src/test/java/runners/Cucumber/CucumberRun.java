@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty"},
         glue = {"steps", "steps.gui", "steps.api"},
-        features = {"src/test/java/resorces/features/userApiTest.feature"
+        features = {"src\\test\\resources\\features\\usersApiTest.feature"
         },
         monochrome = false,
         snippets = SnippetType.CAMELCASE,
