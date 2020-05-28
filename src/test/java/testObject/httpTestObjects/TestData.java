@@ -1,4 +1,4 @@
-package testObject;
+package testObject.httpTestObjects;
 
 public class TestData {
     public String user;

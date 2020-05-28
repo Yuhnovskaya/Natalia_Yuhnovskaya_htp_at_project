@@ -1,20 +1,42 @@
 package webPages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import webDriver.BaseSteps;
-
-import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class BookingLoginPage {
-public static  void login(WebDriver driver, String email, String password) throws InterruptedException {
-        BaseSteps.findClick(driver,"//*[@id=\"current_account\"]");
-        TimeUnit.SECONDS.sleep(3);
-        BaseSteps.findSendKeysClick(driver,"//*[@id=\"username\"]", email);
-        TimeUnit.SECONDS.sleep(3);
-        BaseSteps.findSendKeysClick(driver,"//*[@id=\"password\"]", password);
+    @FindBy(xpath = "//*[@id=\"current_account\"]")
+    private WebElement account;
+
+    @FindBy(xpath = "//*[@id=\"username\"]")
+    private WebElement username;
+
+    @FindBy(xpath = "//*[@id=\"password\"]")
+    private WebElement password;
+
+    @FindBy(xpath = "//*[@id=\"profile-menu\"]/form/input[5]")
+    private WebElement logoutLink;
+
+    public BookingLoginPage(WebDriver driver){
+        PageFactory.initElements(driver,this);
     }
-    public static boolean logoutLinkPresents(WebDriver driver){
-        return driver.findElement(By.xpath("//*[@id=\"profile-menu\"]/form/input[5]")).isDisplayed();
+
+    public void enterUsername(String email){
+        username.sendKeys(email);
+        username.submit();
+    }
+
+    public void enterPassword(String psw){
+        password.sendKeys(psw);
+        password.submit();
+    }
+
+    public void passwordClick(){
+        password.click();
+    }
+
+    public boolean logoutLinkPresents() {
+        return logoutLink.isDisplayed();
     }
 }

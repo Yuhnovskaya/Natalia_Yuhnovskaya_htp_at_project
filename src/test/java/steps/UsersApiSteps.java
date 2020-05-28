@@ -20,13 +20,13 @@ private static final Logger LOGGER = LogManager.getLogger(UsersApiSteps.class);
     @When("I search user by {string} name")
     public void iSearchUserByName(String string) {
         LOGGER.info("I search");
-        System.out.println ("When");
+       // System.out.println ("When");
         // Write code here that turns the phrase above into concrete actions
 //        throw new cucumber.api.PendingException();
     }
     @Then("I verify that I got {string}")
     public void iVerifyThatIGot(String string) {
-        System.out.println ("Then");
+     //   System.out.println ("Then");
         // Write code here that turns the phrase above into concrete actions
 //        throw new cucumber.api.PendingException();
     }

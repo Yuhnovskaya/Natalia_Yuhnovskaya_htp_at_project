@@ -1,9 +1,9 @@
-package otherStuff;
+package steps.httpTestSteps;
 
 
 
-import testObject.User;
-import testObject.ObjectBody;
+import testObject.httpTestObjects.User;
+import testObject.httpTestObjects.ObjectBody;
 
 import java.util.List;
 
