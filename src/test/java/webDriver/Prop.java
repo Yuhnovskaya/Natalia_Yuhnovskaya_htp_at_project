@@ -7,7 +7,7 @@ import java.io.InputStream;
 public class Prop {
     public static java.util.Properties getProp() {
         java.util.Properties prop = new java.util.Properties();
-        try (InputStream input = new FileInputStream("src/test/properties.properties")) {
+        try (InputStream input = new FileInputStream("src/test/resources/booking.properties")) {
             prop.load(input);
         } catch (IOException ex) {
             ex.printStackTrace();

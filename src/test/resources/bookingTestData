@@ -1,0 +1,36 @@
+{
+  "bookingTestCase": [
+    {
+      "city": "Moscow",
+      "daysIn": 10,
+      "daysFor": 5,
+      "adultsNumber": 4,
+      "childrenNumber": 0,
+      "roomNumber": 2
+    },
+    {
+      "city": "Paris",
+      "daysIn":3,
+      "daysFor":7,
+      "adultsNumber":4,
+      "childrenNumber":0,
+      "roomNumber":2
+    },
+    {
+      "city": "Oslo",
+      "daysIn":1,
+      "daysFor":1,
+      "adultsNumber":2,
+      "childrenNumber":1,
+      "roomNumber":1
+    },
+    {
+      "city": "Мадрид",
+      "daysIn":30,
+      "daysFor":2,
+      "adultsNumber":2,
+      "childrenNumber":0,
+      "roomNumber":1
+    }
+  ]
+}

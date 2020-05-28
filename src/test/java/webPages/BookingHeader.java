@@ -1,43 +1,96 @@
 package webPages;
 
 import org.openqa.selenium.WebDriver;
-import webDriver.BaseSteps;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class BookingHeader {
-    public static boolean stayPresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"cross-product-bar\"]/div/span").isDisplayed();
+    @FindBy(xpath = "//*[@id=\"cross-product-bar\"]/div/span")
+    private WebElement stay;
+
+    @FindBy(xpath = "//*[@id=\"cross-product-bar\"]/div/a[1]")
+    private WebElement flights;
+
+    @FindBy(xpath = "//*[@id=\"cross-product-bar\"]/div/a[2]")
+    private WebElement carRent;
+
+    @FindBy(xpath = "//*[@id=\"cross-product-bar\"]/div/a[3]")
+    private WebElement attractions;
+
+    @FindBy(xpath = "//*[@id=\"cross-product-bar\"]/div/a[4]")
+    private WebElement airportTaxi;
+
+    @FindBy(xpath = "//*[@id=\"logo_no_globe_new_logo\"]")
+    private WebElement logo;
+
+    @FindBy(xpath = "//*[@id=\"user_form\"]/ul/li[1]")
+    private WebElement language;
+
+    @FindBy(xpath = "//*[@id=\"user_form\"]/ul/li[2]")
+    private WebElement country;
+
+    @FindBy(xpath = "//*[@id=\"user_form\"]/ul/li[3]")
+    private WebElement help;
+
+    @FindBy(xpath = "//*[@id=\"add_property_topbar\"]")
+    private WebElement property;
+
+    @FindBy(xpath = "//*[@id=\"current_account_create\"]")
+    private WebElement registration;
+
+    @FindBy(xpath = "//*[@id=\"current_account\"]")
+    private WebElement account;
+
+    public BookingHeader(WebDriver driver){
+        PageFactory.initElements(driver,this);
     }
-    public static boolean flightsPresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"cross-product-bar\"]/div/a[1]").isDisplayed();
+
+    public boolean stayPresents(WebDriver driver) {
+        return stay.isDisplayed();
     }
-    public static boolean carRentsPresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"cross-product-bar\"]/div/a[2]").isDisplayed();
+
+    public boolean flightsPresents(WebDriver driver) {
+        return flights.isDisplayed();
     }
-    public static boolean attractionsPresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"cross-product-bar\"]/div/a[3]").isDisplayed();
+
+    public boolean carRentsPresents(WebDriver driver) {
+        return carRent.isDisplayed();
     }
-    public static boolean airportTaxiPresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"cross-product-bar\"]/div/a[4]").isDisplayed();
+
+    public boolean attractionsPresents(WebDriver driver) {
+        return attractions.isDisplayed();
     }
-    public static boolean logoPresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"logo_no_globe_new_logo\"]").isDisplayed();
+
+    public boolean airportTaxiPresents(WebDriver driver) {
+        return airportTaxi.isDisplayed();
     }
-    public static boolean languagePresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"user_form\"]/ul/li[1]").isDisplayed();
+
+    public boolean logoPresents(WebDriver driver) {
+        return logo.isDisplayed();
     }
-    public static boolean countryPresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"user_form\"]/ul/li[2]").isDisplayed();
+
+    public boolean languagePresents(WebDriver driver) {
+        return language.isDisplayed();
     }
-    public static boolean helpPresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"user_form\"]/ul/li[3]").isDisplayed();
+
+    public boolean countryPresents(WebDriver driver) {
+        return country.isDisplayed();
     }
-    public static boolean propertyPresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"add_property_topbar\"]").isDisplayed();
+
+    public boolean helpPresents(WebDriver driver) {
+        return help.isDisplayed();
     }
-    public static boolean registrationPresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"current_account_create\"]").isDisplayed();
+
+    public boolean propertyPresents(WebDriver driver) {
+        return property.isDisplayed();
     }
-    public static boolean accountPresents(WebDriver driver){
-    return BaseSteps.findElement(driver,"//*[@id=\"current_account\"]").isDisplayed();
+
+    public boolean registrationPresents(WebDriver driver) {
+        return registration.isDisplayed();
+    }
+
+    public boolean accountPresents(WebDriver driver) {
+        return account.isDisplayed();
     }
 }

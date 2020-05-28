@@ -1,4 +1,4 @@
-package testObject;
+package testObject.httpTestObjects;
 
 import java.util.List;
 

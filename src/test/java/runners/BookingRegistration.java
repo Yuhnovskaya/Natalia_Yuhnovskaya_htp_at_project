@@ -1,12 +1,12 @@
 package runners;
 
 import org.openqa.selenium.WebDriver;
+import steps.bookingTestSteps.TrashMailSteps;
+import steps.bookingTestSteps.YandexSteps;
 import webDriver.Prop;
 import webDriver.Config;
 import webDriver.DrManager;
-import webDriver.BaseSteps;
-import webPages.TrashmailAddressManagerPage;
-import webPages.YandexLoginPage;
+import webPages.*;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -14,24 +14,31 @@ import java.util.concurrent.TimeUnit;
 public class BookingRegistration {
     public static void main(String[] avgs) throws InterruptedException {
         Properties prop = Prop.getProp();
-        WebDriver driver= DrManager.getDriver(Config.CHROME);
-        String newAddress= TrashmailAddressManagerPage.createTrashmailAddress(driver);
-        driver.get("https://www.booking.com/");
-        BaseSteps.findClick(driver,"(//*[@class=\"sign_in_wrapper\"])[1]");
+        WebDriver driver = DrManager.getDriver(Config.CHROME);
+        BookingIndexPage index = new BookingIndexPage(driver);
+        TrashMailSteps trashMailSteps=new TrashMailSteps();
+        BookingRegistrationPage registrationPage = new BookingRegistrationPage(driver);
+        YandexSteps yandexSteps=new YandexSteps();
+        YandexMailPage yandexMailPage=new YandexMailPage(driver);
+        YandexMailContеntPage yandexMailContеntPage =new YandexMailContеntPage(driver);
+
+        String newAddress = trashMailSteps.createTrashmailAddress(driver);
+        driver.get(prop.getProperty("URL_BOOKING"));
+        index.clickRegistration();
         TimeUnit.SECONDS.sleep(3);
-        BaseSteps.findSendKeysClick(driver, "//*[@type='email']", newAddress);
+        registrationPage.enterEmail(newAddress);
         TimeUnit.SECONDS.sleep(3);
-        BaseSteps.findSendKeysClick(driver, " //*[@id='password']", prop.getProperty("BOOKING_PSW"));
-        BaseSteps.findSendKeysClick(driver, "//*[@id='confirmed_password']", prop.getProperty("BOOKING_PSW"));
+        registrationPage.enterPassword(prop.getProperty("BOOKING_PSW"));
+        registrationPage.confirmPassword(prop.getProperty("BOOKING_PSW"));
         TimeUnit.SECONDS.sleep(3);
-        BaseSteps.findClick(driver, "//*[contains(@class,'closeBtn')]");
-        YandexLoginPage.enterYandexMail(driver);
+        registrationPage.close();
+        yandexSteps.enterYandexMail(driver);
         TimeUnit.SECONDS.sleep(10);
-        BaseSteps.findClick(driver,"//*[@href=\"#spam\"]");
+        yandexMailPage.enterSpam();
         TimeUnit.SECONDS.sleep(15);
-        BaseSteps.findClick(driver,"(//*[contains(text(), \"booking\")])[1]");
+        yandexMailPage.findMailFromBooking();
         TimeUnit.SECONDS.sleep(5);
-        BaseSteps.findClick(driver,"//span[contains(text(),'Включить')]");
-        BaseSteps.findClick(driver,"//*[contains(@href,\"https://secure.booking.com/login.ru.html?\")]");
+        yandexMailContеntPage.getLinks();
+        yandexMailContеntPage.confirmBooking();
     }
 }

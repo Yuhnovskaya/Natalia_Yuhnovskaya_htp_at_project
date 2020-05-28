@@ -3,9 +3,11 @@ package utilites;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
-import testObject.Search;
-import testObject.ObjectBody;
-import testObject.TestData;
+import testObject.BookingTestObjects.BookingTestCase;
+import testObject.BookingTestObjects.BookingTestData;
+import testObject.httpTestObjects.Search;
+import testObject.httpTestObjects.ObjectBody;
+import testObject.httpTestObjects.TestData;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,5 +43,11 @@ public class JSONparser {
         List<TestData> SearchTestData=testData.getTestData();
         return SearchTestData;
         }
+    public static List<BookingTestCase> getBookingTestCase(String path) throws FileNotFoundException {
+        File pathToJSON=fileToParse(path);
+        BookingTestData bookingTestData =gson.fromJson(new JsonReader(new FileReader(pathToJSON)), BookingTestData.class);
+        List<BookingTestCase>bookingTestCase=bookingTestData.getBookingTestCase();
+        return bookingTestCase;
+    }
 }
 
