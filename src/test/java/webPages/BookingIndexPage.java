@@ -1,12 +1,16 @@
 package webPages;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import steps.bookingTestSteps.BookingSteps;
 
 public class BookingIndexPage {
+    private static final Logger LOGGER = LogManager.getLogger(BookingIndexPage.class);
     static Actions actions;
 
     @FindBy(xpath = "//*[@id='ss']")
@@ -67,31 +71,38 @@ public class BookingIndexPage {
     }
 
     public void choseDates() {
+        LOGGER.debug("The method clicks Webelement 'bookingCalendar'");
         bookingCalendar.click();
     }
 
     public WebElement getAdultsCurrentNumber() {
+        LOGGER.debug("The method returns currrent number of addults");
         return adultsCurrentNumber;
     }
 
     public WebElement getChildrenCurrentNumber() {
+        LOGGER.debug("The method returns current number of children");
         return childrenCurrentNumber;
     }
 
     public WebElement getRoomsCurrentNumber() {
+        LOGGER.debug("The method returns current number of rooms");
         return roomsCurrentNumber;
     }
 
     public void checkPrice(WebDriver driver) {
+        LOGGER.debug("The method clicks checkPrice button");
         actions = new Actions(driver);
         actions.moveToElement(checkPrice).click(checkPrice).build().perform();
     }
 
     public void enterAccount() {
+        LOGGER.debug("The method clicks account button");
         account.click();
     }
 
     public void wishlist() {
+        LOGGER.debug("The method clicks wishlist link");
         enterAccount();
         wishlist.click();
     }
@@ -101,30 +112,37 @@ public class BookingIndexPage {
     }
 
     public void plusOneAdult() {
+        LOGGER.debug("The method adds 1 adult");
         plusAdults.click();
     }
 
     public void minusOneAdult() {
+        LOGGER.debug("The method delete 1 adult");
         minusAdults.click();
     }
 
     public void plusOneChild() {
+        LOGGER.debug("The method adds 1 children");
         plusChild.click();
     }
 
     public void minusOneChild() {
+        LOGGER.debug("The method delete 1 children");
         minusChild.click();
     }
 
     public void plusOneRoom() {
+        LOGGER.debug("The method adds 1 room");
         plusRoom.click();
     }
 
     public void minusOneRoom() {
+        LOGGER.debug("The method delete 1 room");
         minusRoom.click();
     }
 
     public void clickRegistration() {
+        LOGGER.debug("The method clicks registration button");
         registration.click();
     }
 }
