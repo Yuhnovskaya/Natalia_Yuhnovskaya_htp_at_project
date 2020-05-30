@@ -2,6 +2,8 @@ package steps.bookingTestSteps;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import webPages.BookingHeader;
@@ -9,7 +11,7 @@ import webPages.BookingHeader;
 public class VerifyHeaderElementsCucumberSteps {
     static WebDriver driver;
     static BookingHeader bookingHeader=new BookingHeader(driver);
-
+    private static final Logger LOGGER = LogManager.getLogger(VerifyHeaderElementsCucumberSteps.class);
     @Then("I verify that header element account is present")
     public void iVerifyThatHeaderAccountIsPresent() {
         Assert.assertTrue(bookingHeader.accountPresents(driver));

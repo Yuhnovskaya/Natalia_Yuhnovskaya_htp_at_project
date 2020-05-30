@@ -1,11 +1,15 @@
 package webPages;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import steps.bookingTestSteps.BookingSteps;
 
 public class BookingHeader {
+    private static final Logger LOGGER = LogManager.getLogger(BookingHeader.class);
     @FindBy(xpath = "//*[@id=\"cross-product-bar\"]/div/span")
     private WebElement stay;
 
@@ -47,50 +51,62 @@ public class BookingHeader {
     }
 
     public boolean stayPresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'stay' is present");
         return stay.isDisplayed();
     }
 
     public boolean flightsPresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'flights' is present");
         return flights.isDisplayed();
     }
 
     public boolean carRentsPresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'carRents' is present");
         return carRent.isDisplayed();
     }
 
     public boolean attractionsPresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'attractions' is present");
         return attractions.isDisplayed();
     }
 
     public boolean airportTaxiPresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'airportTaxi' is present");
         return airportTaxi.isDisplayed();
     }
 
     public boolean logoPresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'logo' is present");
         return logo.isDisplayed();
     }
 
     public boolean languagePresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'languege' is present");
         return language.isDisplayed();
     }
 
     public boolean countryPresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'country' is present");
         return country.isDisplayed();
     }
 
     public boolean helpPresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'help' is present");
         return help.isDisplayed();
     }
 
     public boolean propertyPresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'property' is present");
         return property.isDisplayed();
     }
 
     public boolean registrationPresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'registration' is present");
         return registration.isDisplayed();
     }
 
     public boolean accountPresents(WebDriver driver) {
+        LOGGER.debug("The method confirm that Webelement 'account' is present");
         return account.isDisplayed();
     }
 }

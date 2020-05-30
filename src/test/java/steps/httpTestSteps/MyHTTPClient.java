@@ -9,6 +9,9 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import steps.bookingTestSteps.BookingSteps;
 import testObject.httpTestObjects.ObjectBody;
 import testObject.httpTestObjects.TestData;
 import utilites.JSONparser;
@@ -19,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MyHTTPClient {
+    private static final Logger LOGGER = LogManager.getLogger(MyHTTPClient.class);
     public void httpGet() throws IOException,  URISyntaxException {
     HttpClient client= HttpClientBuilder.create().build();
     URIBuilder builder=new URIBuilder("http://178.124.206.46:8001/app/ws/");

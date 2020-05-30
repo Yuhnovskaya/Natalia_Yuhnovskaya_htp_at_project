@@ -1,6 +1,10 @@
 package tests;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
@@ -17,24 +21,24 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 
-public class VerifyHeaderElements {
+public class VerifyHeaderElementsTest {
     static WebDriver driver = DrManager.getDriver(Config.CHROME);
-  /*public static void dobefore() throws InterruptedException {
-        Properties prop = Prop.getProp();
-        String email=GetTrashmailAddress.getTrashmailAddress(driver);
-        driver.get(prop.getProperty("URL_BOOKING"));
-        LoginBooking.login(driver,email,prop.getProperty("BOOKING_PSW"));
-    }*/
+    private static final Logger LOGGER = LogManager.getLogger(VerifyHeaderElementsTest.class);
 
-@Test
-        public void verifyHeaderElementsTest() throws InterruptedException {
-        BookingHeader bookingHeader=new BookingHeader(driver);
-        BookingSteps bookingSteps=new BookingSteps();
-        TrashMailSteps trashMailSteps=new TrashMailSteps();
+    @Before
+    public void beforeHeaderElementTestInfo() {
+        LOGGER.info("HeaderElementsTest started running");
+    }
+
+    @Test
+    public void verifyHeaderElementsTest() throws InterruptedException {
+        BookingHeader bookingHeader = new BookingHeader(driver);
+        BookingSteps bookingSteps = new BookingSteps();
+        TrashMailSteps trashMailSteps = new TrashMailSteps();
         Properties prop = Prop.getProp();
-        String email= trashMailSteps.getTrashmailAddress(driver);
+        String email = trashMailSteps.getTrashmailAddress(driver);
         driver.get(prop.getProperty("URL_BOOKING"));
-        bookingSteps.login(driver,email,prop.getProperty("BOOKING_PSW"));
+        bookingSteps.login(driver, email, prop.getProperty("BOOKING_PSW"));
         TimeUnit.SECONDS.sleep(5);
 
         Assert.assertTrue(bookingHeader.accountPresents(driver));
@@ -50,5 +54,10 @@ public class VerifyHeaderElements {
         Assert.assertTrue(bookingHeader.stayPresents(driver));
 
         DestroyDriver.destroy(driver);
-        }
+    }
+
+    @After
+    public void afterHeaderElementTestInfo() {
+        LOGGER.info("HeaderElementTest is finfshed");
+    }
 }

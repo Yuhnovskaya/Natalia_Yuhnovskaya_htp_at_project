@@ -1,5 +1,7 @@
 package steps.bookingTestSteps;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import webDriver.Prop;
 import webPages.TrashmailAddressManagerPage;
@@ -10,8 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TrashMailSteps {
     WebDriver driver;
-   // TrashmailAddressManagerPage trashmailAddressManagerPage=new TrashmailAddressManagerPage(driver);
-   // TrashmailIndexPage trashmailIndexPage=new TrashmailIndexPage(driver);
+    private static final Logger LOGGER = LogManager.getLogger(TrashMailSteps.class);
     public String createTrashmailAddress(WebDriver driver) throws InterruptedException {
         TrashmailAddressManagerPage trashmailAddressManagerPage=new TrashmailAddressManagerPage(driver);
         trashmailLogin(driver);
