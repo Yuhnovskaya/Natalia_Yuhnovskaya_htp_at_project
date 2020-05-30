@@ -19,6 +19,7 @@ import java.util.Properties;
 
 public class HttpCucmberSteps {
     private ObjectBody actual;
+    private static final Logger LOGGER = LogManager.getLogger(HttpCucmberSteps.class);
     @Given("I start execution httpTest")
     public void iStartExecutionHttpTest() {
     }

@@ -26,7 +26,7 @@ public class ParisMoscowOsloCucumberSteps {
     static WebDriver driver = DrManager.getDriver(Config.CHROME);
     static Actions actions;
     static HotelsPage hotelsPage = new HotelsPage(driver);
-
+    private static final Logger LOGGER = LogManager.getLogger(ParisMoscowOsloCucumberSteps.class);
     @Given("I navigate to booking")
     public void iNavigateToBooking() {
         driver.get(prop.getProperty("URL_BOOKING"));

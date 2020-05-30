@@ -29,7 +29,7 @@ public class VerifyHeartColorWishlistCucumberSteps {
     static HotelsPage hotelsPage = new HotelsPage(driver);
     static WishlistPage wishlistPage = new WishlistPage(driver);
     static BookingSteps bookingSteps = new BookingSteps();
-
+    private static final Logger LOGGER = LogManager.getLogger(VerifyHeartColorWishlistCucumberSteps.class);
     @Given("I get email from Trashmail and navigate to booking")
     public void iGetEmailFromTrashmailAndNavigateToBooking() throws InterruptedException {
         TrashMailSteps trashMailSteps = new TrashMailSteps();
