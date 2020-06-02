@@ -1,21 +1,15 @@
 package webDriver;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+
+import java.sql.DriverManager;
 
 public class webDriver {
-    public static WebDriver driver;
-    public static WebDriver getChromeDriver(){ if (driver==null) {driver=new ChromeDriver();}
-        return  driver;
+        private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
+
+        public static WebDriver getWebDriver(Config config) {
+            if (webDriver.get() == null)
+                webDriver.set(DrManager.getDriver(config));
+            return webDriver.get();
+        }
     }
-    public static WebDriver getFirefoxDriver(){if (driver==null)
-    {driver=new FirefoxDriver();}
-        return driver;
-    }
-    public static WebDriver getIEllDriver(){if (driver==null)
-    {driver=new InternetExplorerDriver();}
-        return driver;
-    }
-}
