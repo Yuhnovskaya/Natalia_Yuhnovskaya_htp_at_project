@@ -33,11 +33,13 @@ public class VerifyPriceMoscow {
          hotelsPage.cheapestHotels();
          Thread.sleep(5000);
          int maxPrice = bookingSteps.getMinPrice(driver);
+
          Thread.sleep(3000);
          hotelsPage.SortExpensiveToCheap();
          Thread.sleep(4000);
          int minHotelPrice = bookingSteps.priceOfTheFirstHotelOnTheList(driver);
-          Assert.assertTrue(minHotelPrice<=maxPrice);
+
+         Assert.assertTrue(minHotelPrice<=maxPrice);
     }
 /*@After
     public static void doAfter(){
