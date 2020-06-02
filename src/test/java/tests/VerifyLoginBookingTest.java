@@ -1,6 +1,10 @@
 package tests;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import steps.bookingTestSteps.BookingSteps;
@@ -14,19 +18,14 @@ import webPages.BookingLoginPage;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class VerifyLoginBooking {
-    /*   static WebDriver driver= DrManager.getDriver(Config.CHROME);
-         static Properties prop = Prop.getProp();
+public class VerifyLoginBookingTest {
+    private static final Logger LOGGER = LogManager.getLogger(VerifyColorWishlistTest.class);
 
-          @BeforeClass
-          public static void dobefore() throws InterruptedException {
-              BookingSteps bookingSteps=new BookingSteps();
-              TrashMailSteps trashMailSteps=new TrashMailSteps();
-          String email=trashMailSteps.getTrashmailAddress(driver);
-          driver.get(prop.getProperty("URL_BOOKING"));
-          bookingSteps.login(driver,email,prop.getProperty("BOOKING_PSW"));
-              TimeUnit.SECONDS.sleep(10);
-      }*/
+    @Before
+    public void beforeLoginBookingTestInfo() {
+        LOGGER.info("LoginBookingTest started running");
+    }
+
     @Test
     public void verifyLoginBookingTest() throws InterruptedException {
         WebDriver driver = DrManager.getDriver(Config.CHROME);
@@ -43,8 +42,13 @@ public class VerifyLoginBooking {
         TimeUnit.SECONDS.sleep(3);
         Assert.assertTrue(bookingLoginPage.logoutLinkPresents());
     }
-/*    @AfterClass
-    public static void doafter(){
-    DestroyDriver.destroy(driver);
-    }*/
+
+    /*    @AfterClass
+        public static void doafter(){
+        DestroyDriver.destroy(driver);
+        }*/
+    @After
+    public void afterLoginBookingTestInfo() {
+        LOGGER.info("LoginBookingTest is finfshed");
+    }
 }

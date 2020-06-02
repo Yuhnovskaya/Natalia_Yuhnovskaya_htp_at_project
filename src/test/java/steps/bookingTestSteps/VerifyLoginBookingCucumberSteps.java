@@ -21,7 +21,7 @@ public class VerifyLoginBookingCucumberSteps {
     static WebDriver driver;
     static BookingIndexPage bookingIndexPage = new BookingIndexPage(driver);
     static BookingLoginPage bookingLoginPage = new BookingLoginPage(driver);
-
+    private static final Logger LOGGER = LogManager.getLogger( VerifyLoginBookingCucumberSteps.class);
     @Given("I get email from Trashmail, navigate booking and login")
     public void iGetEmailFromTrashmailNavigateBookingAndLogin() throws InterruptedException {
         driver = DrManager.getDriver(Config.CHROME);
