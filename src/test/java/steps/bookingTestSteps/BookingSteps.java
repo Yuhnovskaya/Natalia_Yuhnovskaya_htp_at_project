@@ -1,5 +1,7 @@
 package steps.bookingTestSteps;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -17,9 +19,7 @@ import java.util.concurrent.TimeUnit;
 import static steps.bookingTestSteps.BaseSteps.findClick;
 
 public class BookingSteps {
-   // static WebDriver driver;
-    //static BookingIndexPage bookingIndexPage=new BookingIndexPage(driver);
-   // static HotelsPage hotelsPage=new HotelsPage(driver);
+    private static final Logger LOGGER = LogManager.getLogger(BookingSteps.class);
     static Actions actions;
     public void login(WebDriver driver, String email, String password) throws InterruptedException {
         BookingIndexPage bookingIndexPage=new BookingIndexPage(driver);

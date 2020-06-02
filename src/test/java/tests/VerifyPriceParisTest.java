@@ -1,5 +1,7 @@
 package tests;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import steps.bookingTestSteps.BookingSteps;
@@ -11,13 +13,13 @@ import webPages.HotelsPage;
 import java.io.FileNotFoundException;
 import java.util.Properties;
 
-public class VerifyPriceParis {
-  /*  static Properties prop = Prop.getProp();
-    static WebDriver driver= DrManager.getDriver(Config.CHROME);
-    @BeforeClass
-    public static void doBefore() throws InterruptedException {
-        driver.get(prop.getProperty("URL_BOOKING"));
-    }*/
+public class VerifyPriceParisTest {
+    private static final Logger LOGGER = LogManager.getLogger(VerifyPriceParisTest.class);
+
+    @Before
+    public void beforePriceParisTestInfo() {
+        LOGGER.info("PriceParisTest started running");
+    }
 @Test
 public void verifyPriceParis() throws InterruptedException, FileNotFoundException {
     BookingSteps bookingSteps=new BookingSteps();
@@ -32,8 +34,6 @@ public void verifyPriceParis() throws InterruptedException, FileNotFoundExceptio
     int maxPrice = bookingSteps.getMaxPrice(driver);
     System.out.println(maxPrice);
     Thread.sleep(3000);
-   // hotelsPage.SortExpensiveToCheap();
-  //  Thread.sleep(3000);
     int ExpHotelPrice = bookingSteps.priceOfTheFirstHotelOnTheList(driver);
     System.out.println(ExpHotelPrice);
        Assert.assertTrue(ExpHotelPrice>=maxPrice);
@@ -42,4 +42,8 @@ public void verifyPriceParis() throws InterruptedException, FileNotFoundExceptio
     public void doAfterClass(){
         DestroyDriver.destroy(driver);
     }*/
+@After
+public void afterPriceParisTestInfo(){
+    LOGGER.info("PriceParisTest is finfshed");
+}
 }

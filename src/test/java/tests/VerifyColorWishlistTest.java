@@ -1,9 +1,8 @@
 package tests;
 
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -11,7 +10,6 @@ import steps.bookingTestSteps.BookingSteps;
 import steps.bookingTestSteps.TrashMailSteps;
 import testObject.BookingTestObjects.BookingTestCase;
 import utilites.JSONparser;
-import webDriver.DestroyDriver;
 import webDriver.Prop;
 import webDriver.Config;
 import webDriver.DrManager;
@@ -23,13 +21,18 @@ import java.io.FileNotFoundException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class VerifyColorWishlist {
+public class VerifyColorWishlistTest {
     static Properties prop = Prop.getProp();
     static WebDriver driver = DrManager.getDriver(Config.CHROME);
     static BookingIndexPage bookingIndexPage = new BookingIndexPage(driver);
     static HotelsPage hotelsPage = new HotelsPage(driver);
     static WishlistPage wishlistPage = new WishlistPage(driver);
+    private static final Logger LOGGER = LogManager.getLogger(VerifyColorWishlistTest.class);
 
+    @Before
+    public void beforeColorWishlistTestInfo() {
+        LOGGER.info("ColorWishlistTest started running");
+    }
     @BeforeClass
     public static void doBefore() throws InterruptedException, FileNotFoundException {
         TrashMailSteps trashMailSteps = new TrashMailSteps();
@@ -63,13 +66,16 @@ public class VerifyColorWishlist {
         Assert.assertEquals(firstHotelName, driver.findElement(By.xpath("//*[contains(text(),'" + firstHotelName + "')]")).getText());
         Assert.assertEquals(lastHotelName, driver.findElement(By.xpath(String.format("//*[contains(text(),'" + lastHotelName + "')]", lastHotelName))).getText());
     }
+    /*  @AfterClass
+  public static void doAfter() throws InterruptedException {
 
-    @AfterClass
-    public static void doAfter() throws InterruptedException {
-
-        wishlistPage.removeHotelClick();
-        TimeUnit.SECONDS.sleep(5);
-        wishlistPage.removeHotelClick();
-        DestroyDriver.destroy(driver);
+      wishlistPage.removeHotelClick();
+      TimeUnit.SECONDS.sleep(5);
+      wishlistPage.removeHotelClick();
+      DestroyDriver.destroy(driver);
+  }*/
+    @After
+    public void afterColorWishlistTestInfo() {
+        LOGGER.info("ColorWishlistTest is finfshed");
     }
 }
