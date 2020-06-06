@@ -1,8 +1,11 @@
 package steps.bookingTestSteps;
 
+import cucumber.api.junit.Cucumber;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebDriver;
+import testObject.CurrentTrashmailAddress;
 import webDriver.Prop;
 import webPages.TrashmailAddressManagerPage;
 import webPages.TrashmailIndexPage;
@@ -31,8 +34,8 @@ public class TrashMailSteps {
         TimeUnit.SECONDS.sleep(20);
         String login=trashmailAddressManagerPage.getLogin();
         String domain=trashmailAddressManagerPage.getDomain();
-        String trashmailAdress=login+domain;
-        return trashmailAdress;
+        String trashmailAddress=login+domain;
+        return trashmailAddress;
     }
     public void trashmailLogin(WebDriver driver) throws InterruptedException {
         TrashmailIndexPage trashmailIndexPage=new TrashmailIndexPage(driver);

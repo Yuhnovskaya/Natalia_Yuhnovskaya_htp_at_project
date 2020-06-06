@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import testObject.BookingTestObjects.BookingTestCase;
+import testObject.CurrentTrashmailAddress;
 import utilites.JSONparser;
 import webDriver.Config;
 import webDriver.DestroyDriver;
@@ -33,7 +34,10 @@ public class VerifyHeartColorWishlistCucumberSteps {
     @Given("I get email from Trashmail and navigate to booking")
     public void iGetEmailFromTrashmailAndNavigateToBooking() throws InterruptedException {
         TrashMailSteps trashMailSteps = new TrashMailSteps();
-        String email = trashMailSteps.getTrashmailAddress(driver);
+        CurrentTrashmailAddress currentTrashmailAddress=new CurrentTrashmailAddress();
+
+        trashMailSteps.createTrashmailAddress(driver);
+        String email=currentTrashmailAddress.getCurrentTashmailAddress();
         driver.get(prop.getProperty("URL_BOOKING"));
         bookingSteps.login(driver, email, prop.getProperty("BOOKING_PSW"));
         TimeUnit.SECONDS.sleep(5);
@@ -68,6 +72,6 @@ public class VerifyHeartColorWishlistCucumberSteps {
         TimeUnit.SECONDS.sleep(5);
         bookingIndexPage.wishlist();
         Assert.assertEquals(firstHotelName, driver.findElement(By.xpath("//*[contains(text(),'" + firstHotelName + "')]")).getText());
-        Assert.assertEquals(lastHotelName, driver.findElement(By.xpath(String.format("//*[contains(text(),'" + lastHotelName + "')]", lastHotelName))).getText());
+        Assert.assertEquals(lastHotelName, driver.findElement(By.xpath("//*[contains(text(),'" + lastHotelName + "')]")).getText());
     }
 }

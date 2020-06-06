@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 
 import steps.bookingTestSteps.BookingSteps;
 import steps.bookingTestSteps.TrashMailSteps;
+import testObject.CurrentTrashmailAddress;
 import webDriver.Config;
 import webDriver.DestroyDriver;
 import webDriver.DrManager;
@@ -36,7 +37,10 @@ public class VerifyHeaderElementsTest {
         BookingSteps bookingSteps = new BookingSteps();
         TrashMailSteps trashMailSteps = new TrashMailSteps();
         Properties prop = Prop.getProp();
-        String email = trashMailSteps.getTrashmailAddress(driver);
+        CurrentTrashmailAddress currentTrashmailAddress=new CurrentTrashmailAddress();
+
+        trashMailSteps.createTrashmailAddress(driver);
+        String email=currentTrashmailAddress.getCurrentTashmailAddress();
         driver.get(prop.getProperty("URL_BOOKING"));
         bookingSteps.login(driver, email, prop.getProperty("BOOKING_PSW"));
         TimeUnit.SECONDS.sleep(5);

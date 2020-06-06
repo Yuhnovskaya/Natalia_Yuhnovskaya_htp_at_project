@@ -29,7 +29,7 @@ public class ParisMoscowOsloCucumberSteps {
     private static final Logger LOGGER = LogManager.getLogger(ParisMoscowOsloCucumberSteps.class);
     @Given("I navigate to booking")
     public void iNavigateToBooking() {
-        driver.get(prop.getProperty("URL_BOOKING"));
+        driver.get("https://silverscreen.by/");
     }
 
     @When("I search hotels in case {int}")

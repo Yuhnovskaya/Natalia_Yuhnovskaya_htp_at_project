@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import steps.bookingTestSteps.BookingSteps;
 import steps.bookingTestSteps.TrashMailSteps;
 import testObject.BookingTestObjects.BookingTestCase;
+import testObject.CurrentTrashmailAddress;
 import utilites.JSONparser;
 import webDriver.Prop;
 import webDriver.Config;
@@ -37,8 +38,10 @@ public class VerifyColorWishlistTest {
     public static void doBefore() throws InterruptedException, FileNotFoundException {
         TrashMailSteps trashMailSteps = new TrashMailSteps();
         BookingSteps bookingSteps = new BookingSteps();
+        CurrentTrashmailAddress currentTrashmailAddress=new CurrentTrashmailAddress();
 
-        String email = trashMailSteps.getTrashmailAddress(driver);
+        trashMailSteps.createTrashmailAddress(driver);
+        String email=currentTrashmailAddress.getCurrentTashmailAddress();
         driver.get(prop.getProperty("URL_BOOKING"));
         bookingSteps.login(driver, email, prop.getProperty("BOOKING_PSW"));
         TimeUnit.SECONDS.sleep(5);
