@@ -22,7 +22,6 @@ public class DrManager {
                 throw null;
         }
     }
-
     private static WebDriver getIEllDriver() {
 
         return new EdgeDriver();

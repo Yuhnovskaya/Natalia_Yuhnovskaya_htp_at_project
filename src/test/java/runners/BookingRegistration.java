@@ -15,6 +15,7 @@ public class BookingRegistration {
     public static void main(String[] avgs) throws InterruptedException {
         Properties prop = Prop.getProp();
         WebDriver driver = DrManager.getDriver(Config.CHROME);
+
         BookingIndexPage index = new BookingIndexPage(driver);
         TrashMailSteps trashMailSteps=new TrashMailSteps();
         BookingRegistrationPage registrationPage = new BookingRegistrationPage(driver);

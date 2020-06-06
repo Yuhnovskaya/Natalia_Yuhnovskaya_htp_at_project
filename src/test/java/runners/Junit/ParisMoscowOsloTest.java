@@ -1,15 +1,13 @@
-package runners;
+package runners.Junit;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
 import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
 import org.junit.runners.Suite;
 import org.openqa.selenium.WebDriver;
-import tests.VerifyAddressColorOslo;
-import tests.VerifyPriceMoscow;
-import tests.VerifyPriceParis;
+import tests.VerifyAddressColorOsloTest;
+import tests.VerifyPriceMoscowTest;
+import tests.VerifyPriceParisTest;
 import webDriver.Config;
 import webDriver.DestroyDriver;
 import webDriver.DrManager;
@@ -18,7 +16,7 @@ import webDriver.Prop;
 import java.util.Properties;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({VerifyPriceParis.class, VerifyPriceMoscow.class, VerifyAddressColorOslo.class})
+@Suite.SuiteClasses({VerifyPriceParisTest.class, VerifyPriceMoscowTest.class, VerifyAddressColorOsloTest.class})
 public class ParisMoscowOsloTest {
     static Properties prop = Prop.getProp();
     static WebDriver driver= DrManager.getDriver(Config.CHROME);
