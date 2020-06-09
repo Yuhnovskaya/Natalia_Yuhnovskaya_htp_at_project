@@ -1,125 +1,127 @@
 package steps.cucumber;
 
-
 import cucumber.api.java.After;
-import cucumber.api.java.AfterStep;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import webDriver.Config;
-import webDriver.DrManager;
-import webDriver.Prop;
-import webPages.CinemaIndexPage;
+import webDriver.Driver;
+import webDriver.SilverscreenProperties;
+import webPages.SilverscreenPage;
 
-import java.util.Properties;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 
 public class CinemaCucmberSteps {
-    private static final Logger LOGGER= LogManager.getLogger(CinemaCucmberSteps.class);
-    static WebDriver driver = DrManager.getDriver(Config.CHROME);
-    static CinemaIndexPage cinemaIndexPage = new CinemaIndexPage(driver);
-    static Properties prop = Prop.getProp();
-    static Actions actions = new Actions(driver);
-    static String searchWord = "Дэдпул";
+    SilverscreenPage silverscreenPage;
+    static SilverscreenProperties silverscreenProperties = new SilverscreenProperties();
+    static Actions actions;
+
+    @Before
+    public void preCondition() throws IOException {
+        Driver.initDriver(Config.CHROME);
+        WebDriver driver = Driver.getDriver();
+        silverscreenPage = new SilverscreenPage(driver);
+        actions = new Actions(driver);
+    }
 
     @Given("I open an app")
     public void iOpenAnApp() {
-        driver.manage().window().maximize();
-        driver.get("https://silverscreen.by/");
+        Driver.windowMaxSize();
+        Driver.getURL(silverscreenProperties.getUrlSilverscreen());
     }
 
     @When("I search for <search word> word")
     public void iSearchForSearchWordWord() throws InterruptedException {
         TimeUnit.SECONDS.sleep(5);
-        actions.moveToElement(cinemaIndexPage.searchIcon).build().perform();
-        cinemaIndexPage.searchForWord(searchWord);
-        TimeUnit.SECONDS.sleep(5);
+        // actions.moveToElement(silverscreenPage.searchIcon).build().perform();
+        silverscreenPage.searchForWord(silverscreenProperties.getSearchWord());
+        TimeUnit.SECONDS.sleep(10);
     }
 
     @Then("I see the list of movie items")
     public void iSeeTheListOfMovieItems() {
-        Assert.assertTrue(cinemaIndexPage.listOfFilmsPresnts());
+        Assert.assertTrue(silverscreenPage.listOfFilmsPresnts());
     }
 
     @Then("each item name or description contains <search word>")
     public void eachItemNameOrDescriptionContainsSearchWord() throws InterruptedException {
-        for (int i = 1; i <= cinemaIndexPage.getFilmListLength(); i++) {
-            if (cinemaIndexPage.getFilmTitle(driver, i).contains(searchWord) == true) {
-                Assert.assertTrue(cinemaIndexPage.getFilmTitle(driver, i).contains(searchWord));
-            } else {
-                Assert.assertTrue(cinemaIndexPage.getFilmDescription(driver, i).contains(searchWord));
-                driver.navigate().back();
-                TimeUnit.SECONDS.sleep(3);
-            }
+        for (int i = 1; i <= silverscreenPage.getFilmListLength(); i++) {
+            Assert.assertTrue(silverscreenPage.findSearchWord(silverscreenProperties.getSearchWord(), i));
         }
+        Driver.goBack();
+        TimeUnit.SECONDS.sleep(3);
     }
 
-@When("I login with <login> and <password>")
+    @When("I login with <login> and <password>")
     public void iLoginWithLoginAndPassword() throws InterruptedException {
+        String login = silverscreenProperties.getEmail();
+        String password = silverscreenProperties.getPassword();
+        TimeUnit.SECONDS.sleep(10);
+        actions.moveToElement(silverscreenPage.login).build().perform();
         TimeUnit.SECONDS.sleep(3);
-        String email = "n.yuhnovskaya@yandex.ru";
-        actions.moveToElement(cinemaIndexPage.login).build().perform();
-        TimeUnit.SECONDS.sleep(3);
-        cinemaIndexPage.enterEmail(email);
-        cinemaIndexPage.enterPassword(prop.getProperty("BOOKING_PSW"));
+        silverscreenPage.enterEmail(login);
+        silverscreenPage.enterPassword(password);
     }
 
     @Then("I can see Red Carpet Club <level> in upper right corner")
-    public void iCanSeeRedCarpetClubLevelInUpperRightCorner() {
-        Assert.assertTrue(cinemaIndexPage.levelPresrnts());
+    public void iCanSeeRedCarpetClubLevelInUpperRightCorner() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
+        String level = "Новичок";
+        Assert.assertTrue(silverscreenPage.levelText().contains(level));
     }
 
     @When("I left blank login field")
     public void iLeftBlankLoginField() throws InterruptedException {
-        actions.moveToElement(cinemaIndexPage.login).build().perform();
+        String password = silverscreenProperties.getPassword();
+        actions.moveToElement(silverscreenPage.login).build().perform();
         TimeUnit.SECONDS.sleep(3);
-        cinemaIndexPage.enterPassword(prop.getProperty("BOOKING_PSW"));
+        silverscreenPage.enterPassword(password);
     }
 
     @Then("I see Необходимо заполнить поле E-mail message")
     public void iSeeНеобходимоЗаполнитьПолеEMailMessage() {
-        Assert.assertTrue(cinemaIndexPage.messageText().contains("Необходимо заполнить поле \"E-mail\""));
+        Assert.assertTrue(silverscreenPage.messageText().contains("Необходимо заполнить поле \"E-mail\""));
     }
 
     @When("I left blank password field")
     public void iLeftBlankPasswordField() throws InterruptedException {
-        String email = "n.yuhnovskaya@yandex.ru";
-        actions.moveToElement(cinemaIndexPage.login).build().perform();
         TimeUnit.SECONDS.sleep(3);
-        cinemaIndexPage.enterEmail(email + "\n");
+        String email = silverscreenProperties.getEmail();
+        actions.moveToElement(silverscreenPage.login).build().perform();
+        TimeUnit.SECONDS.sleep(3);
+        silverscreenPage.enterEmail(email + "\n");
     }
 
     @Then("I see Необходимо заполнить поле Пароль message")
     public void iSeeНеобходимоЗаполнитьПолеПарольMessage() {
-        Assert.assertTrue(cinemaIndexPage.messageText().contains("Необходимо заполнить поле \"Пароль\""));
+        Assert.assertTrue(silverscreenPage.messageText().contains("Необходимо заполнить поле \"Пароль\""));
     }
 
     @When("I login with wrong <login> and <password>")
     public void iLoginWithWrongLoginAndPassword() throws InterruptedException {
         TimeUnit.SECONDS.sleep(3);
-        //  TrashMailSteps trashMailSteps=new TrashMailSteps();
-        String email = "n.test@yandex.ru";
-        actions.moveToElement(cinemaIndexPage.login).build().perform();
-        cinemaIndexPage.enterEmail(email);
-        cinemaIndexPage.enterPassword(prop.getProperty("BOOKING_PSW"));
+        String email = silverscreenProperties.getWrongEmail();
+        actions.moveToElement(silverscreenPage.login).build().perform();
+        silverscreenPage.enterEmail(email);
+        silverscreenPage.enterPassword(silverscreenProperties.getPassword());
     }
 
     @Then("I see <message> message")
     public void iSeeMessageMessage() throws InterruptedException {
         TimeUnit.SECONDS.sleep(5);
-        Assert.assertTrue(cinemaIndexPage.messageText().contains("Пользователь не найден"));
+        Assert.assertTrue(silverscreenPage.messageText().contains("Пользователь не найден"));
     }
-/*    @After
-    public static void closeDriver() {
-        driver.close();
-    }*/
+
+    @After
+    public void postCondition() throws InterruptedException {
+        Driver.clearCache();
+    }
 }
