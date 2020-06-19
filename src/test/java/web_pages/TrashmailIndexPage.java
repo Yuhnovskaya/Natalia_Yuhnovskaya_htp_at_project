@@ -6,10 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import steps.booking_test_steps.BookingProperties;
-import utilites.MyProperties;
 
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class TrashmailIndexPage {

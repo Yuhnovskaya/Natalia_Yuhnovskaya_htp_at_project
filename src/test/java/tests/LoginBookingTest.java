@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import steps.booking_test_steps.BookingProperties;
+import settings.BookingProperties;
 import web_driver.Config;
 import web_driver.Driver;
 import web_pages.BookingIndexPage;

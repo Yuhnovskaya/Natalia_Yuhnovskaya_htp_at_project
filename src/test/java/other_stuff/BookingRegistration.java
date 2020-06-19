@@ -1,7 +1,7 @@
 package other_stuff;
 
 import org.openqa.selenium.WebDriver;
-import steps.booking_test_steps.BookingProperties;
+import settings.BookingProperties;
 import web_driver.Driver;
 import web_pages.*;
 

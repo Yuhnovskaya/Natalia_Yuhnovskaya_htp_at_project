@@ -7,7 +7,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import steps.booking_test_steps.BookingProperties;
+import settings.BookingProperties;
 import test_objects.booking_test_objects.BookingTestCase;
 import utilites.JSONparser;
 import web_driver.Config;

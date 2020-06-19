@@ -10,14 +10,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import web_driver.Config;
 import web_driver.Driver;
-import test_objects.SilverscreenProperties;
+import settings.SilverscreenProperties;
 import web_pages.SilverscreenPage;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 
-public class CinemaCucmberSteps {
+public class SilverScreenCucumberSteps {
     SilverscreenPage silverscreenPage;
     static SilverscreenProperties silverscreenProperties = new SilverscreenProperties();
     static Actions actions;

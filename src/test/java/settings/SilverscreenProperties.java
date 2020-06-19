@@ -1,4 +1,4 @@
-package test_objects;
+package settings;
 
 import utilites.MyProperties;
 

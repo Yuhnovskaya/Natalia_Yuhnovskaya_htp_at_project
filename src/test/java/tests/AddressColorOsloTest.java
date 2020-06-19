@@ -6,7 +6,7 @@ import org.junit.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import steps.booking_test_steps.BookingProperties;
+import settings.BookingProperties;
 import test_objects.booking_test_objects.BookingTestCase;
 import utilites.JSONparser;
 import web_driver.Config;
