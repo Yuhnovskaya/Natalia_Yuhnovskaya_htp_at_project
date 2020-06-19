@@ -4,7 +4,7 @@ Feature: ParisBookingTest
     Given I navigate to booking
     When I search hotels in case <number>
     And <test case>
-    Then I verify that <result>
+    Then I check that <result>
 
     Examples:
     |number|test case                                                       |result                                                                  |

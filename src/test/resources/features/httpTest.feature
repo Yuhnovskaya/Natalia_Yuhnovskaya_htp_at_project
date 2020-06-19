@@ -7,8 +7,8 @@ Feature: httpTestSteps
 
 Examples:
 |case|expected|
-|0   |"src/test/resources/httpExpectedData/allUsers"|
-|1   |"src/test/resources/httpExpectedData/shortFullName"|
-|2   |"src/test/resources/httpExpectedData/shortPartialName"|
-|3   |"src/test/resources/httpExpectedData/longFullName"|
-|4   |"src/test/resources/httpExpectedData/longPartialName"|
+|0   |"src/test/resources/http_expected_data/allUsers"|
+|1   |"src/test/resources/http_expected_data/shortFullName"|
+|2   |"src/test/resources/http_expected_data/shortPartialName"|
+|3   |"src/test/resources/http_expected_data/longFullName"|
+|4   |"src/test/resources/http_expected_data/longPartialName"|

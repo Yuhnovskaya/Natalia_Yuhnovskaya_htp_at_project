@@ -4,24 +4,19 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
-import steps.httpTestSteps.MyHTTPClient;
+import steps.http_test_steps.MyHTTPClient;
 import org.junit.Assert;
 import org.junit.Test;
-import steps.httpTestSteps.CheckResult;
-import testObject.httpTestObjects.ObjectBody;
-import testObject.httpTestObjects.TestData;
+import test_objects.http_test_objects.TestData;
 import utilites.JSONparser;
-import webDriver.Prop;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Map;
-import java.util.Properties;
 
 
 public class SearchTest {
     static MyHTTPClient myHTTPClient = new MyHTTPClient();
-    static Properties prop = Prop.getProp();
+    private static final String URL = "http://178.124.206.46:8001/app/ws/";
     private static final Logger LOGGER = LogManager.getLogger(SearchTest.class);
 
     @Before
@@ -33,46 +28,46 @@ public class SearchTest {
     public void allUsers() throws IOException, URISyntaxException {
 
         TestData testData = JSONparser.parseTestData("src/test/resources/httpTestData").get(0);
-        Map<String, ObjectBody> actualMap = myHTTPClient.httpPost(prop.getProperty("URL_WEBSERVICE"), testData);
-        ObjectBody actual = actualMap.entrySet().iterator().next().getValue();
-        ObjectBody expected = JSONparser.getExpectedData("src/test/resources/httpExpectedData/allUsers");
-        Assert.assertTrue(CheckResult.checkResult(actual, expected));
+        String actualObjectBody = myHTTPClient.httpPost(URL, testData);
+        String expectedData = JSONparser.getExpectedData("src/test/resources/http_expected_data/allUsers");
+        String actualData = JSONparser.parseActualData(actualObjectBody);
+        Assert.assertTrue(actualData.equals(expectedData));
     }
 
     @Test
     public void shotFullName() throws IOException, URISyntaxException {
         TestData testData = JSONparser.parseTestData("src/test/resources/httpTestData").get(1);
-        Map<String, ObjectBody> actualMap = myHTTPClient.httpPost(prop.getProperty("URL_WEBSERVICE"), testData);
-        ObjectBody actual = actualMap.entrySet().iterator().next().getValue();
-        ObjectBody expected = JSONparser.getExpectedData("src/test/resources/httpExpectedData/shortFullName");
-        Assert.assertTrue(CheckResult.checkResult(actual, expected));
+        String actualObjectBody = myHTTPClient.httpPost(URL, testData);
+        String expectedData = JSONparser.getExpectedData("src/test/resources/http_expected_data/shortFullName");
+        String actualData = JSONparser.parseActualData(actualObjectBody);
+        Assert.assertTrue(actualData.equals(expectedData));
     }
 
     @Test
     public void shotPartialName() throws IOException, URISyntaxException {
         TestData testData = JSONparser.parseTestData("src/test/resources/httpTestData").get(2);
-        Map<String, ObjectBody> actualMap = myHTTPClient.httpPost(prop.getProperty("URL_WEBSERVICE"), testData);
-        ObjectBody actual = actualMap.entrySet().iterator().next().getValue();
-        ObjectBody expected = JSONparser.getExpectedData("src/test/resources/httpExpectedData/shortPartialName");
-        Assert.assertTrue(CheckResult.checkResult(actual, expected));
+        String actualObjectBody = myHTTPClient.httpPost(URL, testData);
+        String expectedData = JSONparser.getExpectedData("src/test/resources/http_expected_data/shortPartialName");
+        String actualData = JSONparser.parseActualData(actualObjectBody);
+        Assert.assertTrue(actualData.equals(expectedData));
     }
 
     @Test
     public void longFullName() throws IOException, URISyntaxException {
         TestData testData = JSONparser.parseTestData("src/test/resources/httpTestData").get(3);
-        Map<String, ObjectBody> actualMap = myHTTPClient.httpPost(prop.getProperty("URL_WEBSERVICE"), testData);
-        ObjectBody actual = actualMap.entrySet().iterator().next().getValue();
-        ObjectBody expected = JSONparser.getExpectedData("src/test/resources/httpExpectedData/longFullName");
-        Assert.assertTrue(CheckResult.checkResult(actual, expected));
+        String actualObjectBody = myHTTPClient.httpPost(URL, testData);
+        String expectedData = JSONparser.getExpectedData("src/test/resources/http_expected_data/longFullName");
+        String actualData = JSONparser.parseActualData(actualObjectBody);
+        Assert.assertTrue(actualData.equals(expectedData));
     }
 
     @Test
     public void longPartialName() throws IOException, URISyntaxException {
         TestData testData = JSONparser.parseTestData("src/test/resources/httpTestData").get(4);
-        Map<String, ObjectBody> actualMap = myHTTPClient.httpPost(prop.getProperty("URL_WEBSERVICE"), testData);
-        ObjectBody actual = actualMap.entrySet().iterator().next().getValue();
-        ObjectBody expected = JSONparser.getExpectedData("src/test/resources/httpExpectedData/longPartialName");
-        Assert.assertTrue(CheckResult.checkResult(actual, expected));
+        String actualObjectBody = myHTTPClient.httpPost(URL, testData);
+        String expectedData = JSONparser.getExpectedData("src/test/resources/http_expected_data/longPartialName");
+        String actualData = JSONparser.parseActualData(actualObjectBody);
+        Assert.assertTrue(actualData.equals(expectedData));
     }
 
     @After
